@@ -1,0 +1,19 @@
+body {
+    margin:1em;
+    padding:1em;
+}
+
+
+
+#path43 {
+    fill: none;
+    stroke-width:0.1rem;
+    stroke: #000000
+}
+
+rect {
+    fill: red;
+
+
+    stroke-linejoin: round;
+}

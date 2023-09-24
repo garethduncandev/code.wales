@@ -1,0 +1,14 @@
+{
+  "name": "code.wales",
+  "version": "1.0.0",
+  "description": "Wales in code",
+  "author": "Gareth Duncan",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}
