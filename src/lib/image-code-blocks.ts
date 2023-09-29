@@ -1,52 +1,67 @@
 import { Column } from './column.js';
 import { imageOnLoadAsync } from './image-async.js';
-import { createImageFromSvg } from './image-svg.js';
 
-export class CodeEffectSVG {
+export class ImageCodeBlocks {
   private div!: HTMLElement;
 
   public constructor(
-    private outputElementId: string,
     private blockWidth: number,
     private blockHeight: number,
-    private svgId: string,
     private spacing: number
-  ) {
-    const div = document.getElementById(this.outputElementId);
+  ) {}
+
+  public async createFromImageSrc(
+    src: string,
+    outputElementId: string
+  ): Promise<void> {
+    const div = document.getElementById(outputElementId);
     if (!div) {
       throw new Error('Could not get div');
     }
     this.div = div;
+    const image = new Image();
+    image.src = src;
+    await imageOnLoadAsync(image);
+    await this.createFromImage(image);
   }
 
-  public async createCodeEffect(): Promise<void> {
-    const svg: SVGMarkerElement = document.getElementById(
-      this.svgId
-    ) as unknown as SVGMarkerElement;
-
-    const svgWidth = svg.viewBox.baseVal.width;
-    const svgHeight = svg.viewBox.baseVal.height;
-
-    const rowsCount = svgHeight / this.blockHeight;
-    const columnsCount = svgWidth / this.blockWidth;
-
-    const image = createImageFromSvg(svg);
-    await imageOnLoadAsync(image);
-
-    const context = this.createContext(svgWidth, svgHeight);
+  private async createFromImage(image: HTMLImageElement): Promise<void> {
+    const context = this.createContext(image.width, image.height);
     context.drawImage(image, 0, 0);
-
+    const rowsCount = image.height / this.blockHeight;
+    const columnsCount = image.width / this.blockWidth;
     const grid = this.splitIntoGrid(
       context,
-      svgWidth,
-      svgHeight,
+      image.width,
+      image.height,
       rowsCount,
       columnsCount
     );
-    this.drawBlocks(grid);
+
+    const codeBlocks = this.generateCodeBlocks(grid);
+    const outputSvg = this.createdOutputSVGElement(image.width, image.height);
+
+    outputSvg.getElementById('code-effect-group')?.append(...codeBlocks);
+
+    this.div.appendChild(outputSvg);
   }
 
-  public createContext(
+  private createdOutputSVGElement(
+    width: number,
+    height: number
+  ): SVGSVGElement {
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('id', 'code-effect');
+    svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    svg.setAttribute('xmlns:svg', 'http://www.w3.org/2000/svg');
+    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.setAttribute('id', 'code-effect-group');
+    svg.appendChild(g);
+    return svg;
+  }
+
+  private createContext(
     canvasWidth: number,
     canvasHeight: number
   ): CanvasRenderingContext2D {
@@ -60,23 +75,16 @@ export class CodeEffectSVG {
     return context;
   }
 
-  public splitIntoGrid(
+  private splitIntoGrid(
     context: CanvasRenderingContext2D,
     width: number,
     height: number,
     rowsCount: number,
     columnsCount: number
   ): Column[][] {
-    //const width = context.canvas.width;
-    //const height = context.canvas.height;
-
     let startY = 0;
     let grid: Column[][] = [];
     for (let y = 0; y < rowsCount; y++) {
-      // Loop through 10 items
-
-      // calculate start and end (basically get coords for first and last block)
-
       let startX = 0;
       let columns: Column[] = [];
       for (let x = 0; x < columnsCount; x++) {
@@ -186,9 +194,9 @@ export class CodeEffectSVG {
   ) {
     const pixelData = context.getImageData(
       startX,
-      startY,
+      startY + Math.floor(blockHeight / 2),
       blockWidth,
-      blockHeight
+      1
     ).data;
 
     var notWhiteOrTransparent = false;
@@ -211,36 +219,34 @@ export class CodeEffectSVG {
     return notWhiteOrTransparent;
   }
 
-  public drawBlocks(grid: Column[][]) {
-    // draw rectangles
+  private generateCodeBlocks(grid: Column[][]): SVGRectElement[] {
+    const rectangles: SVGRectElement[] = [];
     for (let y = 0; y < grid.length; y++) {
       for (let x = 0; x < grid[y].length; x++) {
-        const merged = grid[y][x].merged;
-        if (merged) {
-          // continue;
-        }
         const fill = grid[y][x].fill;
         if (fill) {
           const rect = this.createRectangle(
             grid[y][x].startX,
             grid[y][x].startY,
-            grid[y][x].blockWidth
+            grid[y][x].blockWidth,
+            this.blockHeight
           );
-
-          this.div.append(rect);
+          rectangles.push(rect);
         }
       }
     }
+    return rectangles;
   }
 
   private createRectangle(
     startX: number,
     startY: number,
-    blockWidth: number
+    blockWidth: number,
+    blockHeight: number
   ): SVGRectElement {
     const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
     rect.setAttribute('width', (blockWidth - this.spacing).toString());
-    rect.setAttribute('height', (this.blockHeight - this.spacing).toString());
+    rect.setAttribute('height', (blockHeight - this.spacing).toString());
     rect.setAttribute('x', startX.toString());
     rect.setAttribute('y', startY.toString());
     return rect;
