@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "env": {
+        "NO_COLOR": "true" // fixes serverReadyAction pattern matching
+      },
+      "name": "Launch Vite DEV server",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "type": "node",
+      "serverReadyAction": {
+        "action": "debugWithEdge",
+        "pattern": "Local:   http://localhost:([0-9]+)/",
+        "uriFormat": "http://localhost:%s/src/",
+        "killOnServerStop": true
+      },
+      "console": "internalConsole"
+    }
+  ]
+}

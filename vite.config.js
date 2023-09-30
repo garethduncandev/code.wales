@@ -7,4 +7,9 @@ export default defineConfig({
       plugins: [postcssNesting],
     },
   },
+  build: {
+    rollupOptions: {
+      input: 'index.html',
+    },
+  },
 });

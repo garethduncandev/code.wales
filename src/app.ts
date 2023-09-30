@@ -6,4 +6,4 @@ const spacing = 0.1;
 
 const codeEffectSVG = new ImageCodeBlocks(blockWidth, blockHeight, spacing);
 
-codeEffectSVG.createFromImageSrc('./assets/wales.svg', 'output');
+codeEffectSVG.createFromImageSrc('/wales.svg', 'output');
