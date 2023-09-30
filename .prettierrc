@@ -1,0 +1,7 @@
+{
+  "singleQuote": true,
+  "plugins": [],
+  "printWidth": 80,
+  "htmlWhitespaceSensitivity": "css",
+  "trailingComma": "es5"
+}

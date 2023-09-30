@@ -12,7 +12,8 @@ export class ImageCodeBlocks {
 
   public async createFromImageSrc(
     src: string,
-    outputElementId: string
+    outputElementId: string,
+    svgId: string
   ): Promise<void> {
     const div = document.getElementById(outputElementId);
     if (!div) {
@@ -22,10 +23,10 @@ export class ImageCodeBlocks {
     const image = new Image();
     image.src = src;
     await imageOnLoadAsync(image);
-    await this.createFromImage(image);
+    this.createFromImage(image, svgId);
   }
 
-  private async createFromImage(image: HTMLImageElement): Promise<void> {
+  private createFromImage(image: HTMLImageElement, svgId: string): void {
     const context = this.createContext(image.width, image.height);
     context.drawImage(image, 0, 0);
     const rowsCount = image.height / this.blockHeight;
@@ -39,7 +40,11 @@ export class ImageCodeBlocks {
     );
 
     const codeBlocks = this.generateCodeBlocks(grid);
-    const outputSvg = this.createdOutputSVGElement(image.width, image.height);
+    const outputSvg = this.createdOutputSVGElement(
+      svgId,
+      image.width,
+      image.height
+    );
 
     outputSvg.getElementById('code-effect-group')?.append(...codeBlocks);
 
@@ -47,11 +52,13 @@ export class ImageCodeBlocks {
   }
 
   private createdOutputSVGElement(
+    svgId: string,
     width: number,
     height: number
   ): SVGSVGElement {
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('id', 'code-effect');
+    svg.setAttribute('id', svgId);
+    console.log('look here', svg);
     svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
     svg.setAttribute('xmlns:svg', 'http://www.w3.org/2000/svg');
     svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
@@ -83,14 +90,14 @@ export class ImageCodeBlocks {
     columnsCount: number
   ): Column[][] {
     let startY = 0;
-    let grid: Column[][] = [];
+    const grid: Column[][] = [];
     for (let y = 0; y < rowsCount; y++) {
       let startX = 0;
-      let columns: Column[] = [];
+      const columns: Column[] = [];
       for (let x = 0; x < columnsCount; x++) {
         // get all block positions to then calculate the first and last block position for each line
 
-        var pixelsContainColor = this.areaContainsColour(
+        const pixelsContainColor = this.areaContainsColour(
           context,
           startX,
           startY,
@@ -134,25 +141,24 @@ export class ImageCodeBlocks {
 
     this.mergeColumns(grid);
 
-    // merge end
-
-    // filter out non merged columns and columns that are not filled
-
     const filteredGrid: Column[][] = [];
-    for (let row of grid) {
+    for (const row of grid) {
       const filteredColumns = row.filter(
         (column) => !column.merged && column.fill
       );
       filteredGrid.push(filteredColumns);
     }
 
-    return filteredGrid;
+    // split each row into random length blocks
+    const finalBlocks = this.splitIntoRandomLengthBlocks(filteredGrid);
+
+    return finalBlocks;
   }
 
   /// <summary>
   /// Merge columns e.g. columns that have fill true and next to each other, combine startX values
   /// </summary>
-  private mergeColumns(grid: Column[][]) {
+  private mergeColumns(grid: Column[][]): void {
     for (let y = 0; y < grid.length; y++) {
       let previousFill = false;
       let currentBlockWidth = 0;
@@ -185,13 +191,32 @@ export class ImageCodeBlocks {
     }
   }
 
+  private splitIntoRandomLengthBlocks(grid: Column[][]): Column[][] {
+    // foreach row
+    const rows: Column[][] = [];
+    for (let y = 0; y < grid.length; y++) {
+      // foreach column
+      const columns: Column[] = [];
+      for (let x = 0; x < grid[y].length; x++) {
+        const blockWidth = grid[y][x].blockWidth;
+
+        console.log(x);
+        columns.push(grid[y][x]);
+      }
+
+      rows.push(columns);
+    }
+
+    return rows;
+  }
+
   private areaContainsColour(
     context: CanvasRenderingContext2D,
     startX: number,
     startY: number,
     blockWidth: number,
     blockHeight: number
-  ) {
+  ): boolean {
     const pixelData = context.getImageData(
       startX,
       startY + Math.floor(blockHeight / 2),
@@ -199,7 +224,7 @@ export class ImageCodeBlocks {
       1
     ).data;
 
-    var notWhiteOrTransparent = false;
+    let notWhiteOrTransparent = false;
     for (let i = 0; i < pixelData.length; i += 4) {
       const red = pixelData[i];
       const green = pixelData[i + 1];

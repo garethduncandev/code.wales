@@ -1,0 +1,24 @@
+{
+  "root": true,
+  "ignorePatterns": [],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": true,
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended-type-checked",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+      ],
+      "rules": {
+        "@typescript-eslint/explicit-member-accessibility": 2,
+        "@typescript-eslint/explicit-function-return-type": ["error"],
+        "@typescript-eslint/member-ordering": ["error"]
+      }
+    }
+  ]
+}
