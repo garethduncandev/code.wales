@@ -15,6 +15,4 @@ const codeEffectSVG = new ImageCodeBlocks(
   true
 );
 
-void codeEffectSVG
-  .createFromImageSrc('/code.wales/wales.svg', 'output')
-  .then(() => {});
+void codeEffectSVG.createFromImageSrc('/wales.svg', 'output').then(() => {});
