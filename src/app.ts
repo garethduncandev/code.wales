@@ -1,11 +1,18 @@
 import { ImageCodeBlocks } from './lib/image-code-blocks.js';
 
-const blockWidth = 3;
-const blockHeight = 5;
-const spacing = 1;
+const accuracy = 1;
+const codeBlockHeight = 5;
+const codeBlockMinWidth = 5;
+const codeBlockMaxWidth = 30;
+const spacing = 2;
 
-const codeEffectSVG = new ImageCodeBlocks(blockWidth, blockHeight, spacing);
+const codeEffectSVG = new ImageCodeBlocks(
+  accuracy,
+  codeBlockHeight,
+  codeBlockMinWidth,
+  codeBlockMaxWidth,
+  spacing,
+  true
+);
 
-void codeEffectSVG
-  .createFromImageSrc('/wales.svg', 'output', 'wales')
-  .then(() => {});
+void codeEffectSVG.createFromImageSrc('/wales.svg', 'output').then(() => {});

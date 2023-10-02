@@ -3,17 +3,24 @@ import { imageOnLoadAsync } from './image-async.js';
 
 export class ImageCodeBlocks {
   private div!: HTMLElement;
+  private previousClassName: string | undefined = undefined;
 
   public constructor(
-    private blockWidth: number,
+    private accuracy: number,
     private blockHeight: number,
-    private spacing: number
-  ) {}
+    private codeBlockMinWidth: number,
+    private codeBlockMaxWidth: number,
+    private spacing: number,
+    private monotype: boolean
+  ) {
+    if (this.monotype) {
+      this.accuracy = this.codeBlockMinWidth;
+    }
+  }
 
   public async createFromImageSrc(
     src: string,
-    outputElementId: string,
-    svgId: string
+    outputElementId: string
   ): Promise<void> {
     const div = document.getElementById(outputElementId);
     if (!div) {
@@ -23,28 +30,27 @@ export class ImageCodeBlocks {
     const image = new Image();
     image.src = src;
     await imageOnLoadAsync(image);
-    this.createFromImage(image, svgId);
+    this.createFromImage(image);
   }
 
-  private createFromImage(image: HTMLImageElement, svgId: string): void {
+  private createFromImage(image: HTMLImageElement): void {
     const context = this.createContext(image.width, image.height);
     context.drawImage(image, 0, 0);
     const rowsCount = image.height / this.blockHeight;
-    const columnsCount = image.width / this.blockWidth;
+    const columnsCount = image.width / this.accuracy;
     const grid = this.splitIntoGrid(
       context,
       image.width,
       image.height,
       rowsCount,
-      columnsCount
+      columnsCount,
+      this.codeBlockMinWidth,
+      this.codeBlockMaxWidth,
+      this.monotype
     );
 
     const codeBlocks = this.generateCodeBlocks(grid);
-    const outputSvg = this.createdOutputSVGElement(
-      svgId,
-      image.width,
-      image.height
-    );
+    const outputSvg = this.createdOutputSVGElement(image.width, image.height);
 
     outputSvg.getElementById('code-effect-group')?.append(...codeBlocks);
 
@@ -52,12 +58,10 @@ export class ImageCodeBlocks {
   }
 
   private createdOutputSVGElement(
-    svgId: string,
     width: number,
     height: number
   ): SVGSVGElement {
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('id', svgId);
     console.log('look here', svg);
     svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
     svg.setAttribute('xmlns:svg', 'http://www.w3.org/2000/svg');
@@ -87,7 +91,10 @@ export class ImageCodeBlocks {
     width: number,
     height: number,
     rowsCount: number,
-    columnsCount: number
+    columnsCount: number,
+    codeBlockMinWidth: number,
+    codeBlockMaxWidth: number,
+    monotype: boolean
   ): Column[][] {
     let startY = 0;
     const grid: Column[][] = [];
@@ -101,7 +108,7 @@ export class ImageCodeBlocks {
           context,
           startX,
           startY,
-          this.blockWidth,
+          this.accuracy,
           this.blockHeight
         );
 
@@ -110,10 +117,10 @@ export class ImageCodeBlocks {
             startX,
             startY,
             fill: false,
-            blockWidth: this.blockWidth,
+            blockWidth: this.accuracy,
             merged: false,
           });
-          startX += this.blockWidth;
+          startX += this.accuracy;
           continue;
         }
 
@@ -121,11 +128,11 @@ export class ImageCodeBlocks {
           startX,
           startY,
           fill: true,
-          blockWidth: this.blockWidth,
+          blockWidth: this.accuracy,
           merged: false,
         });
 
-        startX += this.blockWidth;
+        startX += this.accuracy;
         if (startX >= width) {
           break;
         }
@@ -150,7 +157,12 @@ export class ImageCodeBlocks {
     }
 
     // split each row into random length blocks
-    const finalBlocks = this.splitIntoRandomLengthBlocks(filteredGrid);
+    const finalBlocks = this.splitIntoRandomLengthBlocks(
+      filteredGrid,
+      codeBlockMinWidth,
+      codeBlockMaxWidth,
+      monotype
+    );
 
     return finalBlocks;
   }
@@ -170,7 +182,7 @@ export class ImageCodeBlocks {
           column.merged = true;
           // update blockWidth of previous block
           const previousColumn = grid[y][blockToMergeWithIndex];
-          previousColumn.blockWidth = currentBlockWidth + this.blockWidth;
+          previousColumn.blockWidth = currentBlockWidth + this.accuracy;
           currentBlockWidth = previousColumn.blockWidth;
           previousFill = true;
           continue;
@@ -191,7 +203,12 @@ export class ImageCodeBlocks {
     }
   }
 
-  private splitIntoRandomLengthBlocks(grid: Column[][]): Column[][] {
+  private splitIntoRandomLengthBlocks(
+    grid: Column[][],
+    codeBlockMinWidth: number,
+    codeBlockMaxWidth: number,
+    monotype: boolean
+  ): Column[][] {
     // foreach row
     const rows: Column[][] = [];
     for (let y = 0; y < grid.length; y++) {
@@ -199,9 +216,29 @@ export class ImageCodeBlocks {
       const columns: Column[] = [];
       for (let x = 0; x < grid[y].length; x++) {
         const blockWidth = grid[y][x].blockWidth;
+        const newBlockWidths = this.randomNumbersWithSum(
+          blockWidth,
+          codeBlockMinWidth,
+          codeBlockMaxWidth,
+          monotype
+        );
 
-        console.log(x);
-        columns.push(grid[y][x]);
+        let newStartX = grid[y][x].startX;
+
+        for (let w = 0; w < newBlockWidths.length; w++) {
+          const width = newBlockWidths[w];
+
+          const newColumn: Column = {
+            fill: true,
+            merged: true,
+            startY: grid[y][x].startY,
+            startX: newStartX,
+            blockWidth: width,
+          };
+
+          newStartX += width;
+          columns.push(newColumn);
+        }
       }
 
       rows.push(columns);
@@ -254,7 +291,9 @@ export class ImageCodeBlocks {
             grid[y][x].startX,
             grid[y][x].startY,
             grid[y][x].blockWidth,
-            this.blockHeight
+            this.blockHeight,
+            this.codeBlockMinWidth,
+            this.codeBlockMaxWidth
           );
           rectangles.push(rect);
         }
@@ -266,14 +305,117 @@ export class ImageCodeBlocks {
   private createRectangle(
     startX: number,
     startY: number,
-    blockWidth: number,
-    blockHeight: number
+    codeBlockWidth: number,
+    codeBlockHeight: number,
+    codeBlockMinWidth: number,
+    codeBlockMaxWidth: number
   ): SVGRectElement {
     const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-    rect.setAttribute('width', (blockWidth - this.spacing).toString());
-    rect.setAttribute('height', (blockHeight - this.spacing).toString());
+    rect.setAttribute('width', (codeBlockWidth - this.spacing).toString());
+    rect.setAttribute('height', (codeBlockHeight - this.spacing).toString());
     rect.setAttribute('x', startX.toString());
     rect.setAttribute('y', startY.toString());
+
+    const className = this.calculateRectClassName(
+      codeBlockWidth,
+      codeBlockMinWidth,
+      codeBlockMaxWidth
+    );
+    rect.setAttribute('class', className);
+
     return rect;
+  }
+
+  private calculateRectClassName(
+    blockWidth: number,
+    codeBlockMinWidth: number,
+    codeBlockMaxWidth: number
+  ): string {
+    let className: string = '';
+    do {
+      if (blockWidth === codeBlockMinWidth) {
+        className = this.chooseRandomString(['parenthesis', 'space']);
+        continue;
+      }
+
+      if (blockWidth === codeBlockMaxWidth) {
+        className = this.chooseRandomString(['comment', 'function']);
+        continue;
+      }
+
+      className = this.chooseRandomString([
+        'access-modifier',
+        'primitive-type',
+        'conditional-statement',
+        'jump-statement',
+        'variable-declaration-const',
+        'variable-declaration-let',
+      ]);
+
+      continue;
+    } while (this.previousClassName === className);
+    this.previousClassName = className;
+    return className;
+  }
+
+  private chooseRandomString(strings: string[]): string {
+    const randomIndex = Math.floor(Math.random() * strings.length);
+    return strings[randomIndex];
+  }
+
+  private randomNumbersWithSum(
+    sum: number,
+    codeBlockMinWidth: number,
+    codeBlockMaxWidth: number,
+    monotype: boolean
+  ): number[] {
+    let availableWidths: number[] = [];
+    if (monotype) {
+      const numberOfBlocks = Math.floor(sum / codeBlockMinWidth);
+      availableWidths = Array.from(Array(numberOfBlocks).keys()).map(
+        (m) => m * codeBlockMinWidth
+      );
+    } else {
+      availableWidths = Array.from(Array(sum).keys());
+    }
+
+    const numbers: number[] = [];
+    let remainingSum = sum;
+    while (remainingSum > codeBlockMinWidth) {
+      // e.g. if remaining length is 5 and codeBlockMinWidth is 3, then we can only have 2 blocks left
+      // leaving us with a 3 and a 2
+      // In this case, just add the remaining sum as a block
+      // won't be needed if we make all values a multiple of codeBlockMinWidth
+      if (remainingSum < codeBlockMinWidth * 2) {
+        numbers.push(remainingSum);
+        break;
+      }
+
+      const randomNumber = this.generateRandomNumber(
+        availableWidths,
+        codeBlockMinWidth,
+        codeBlockMaxWidth
+      );
+
+      numbers.push(randomNumber);
+      remainingSum -= randomNumber;
+    }
+    return numbers;
+  }
+
+  private generateRandomNumber(
+    availableWidths: number[],
+    codeBlockMinWidth: number,
+    codeBlockMaxWidth: number
+  ): number {
+    let randomNumber: number;
+    do {
+      const randomIndex = Math.floor(Math.random() * availableWidths.length);
+      randomNumber = availableWidths[randomIndex];
+    } while (
+      randomNumber < codeBlockMinWidth ||
+      randomNumber > codeBlockMaxWidth
+    );
+    return randomNumber;
   }
 }

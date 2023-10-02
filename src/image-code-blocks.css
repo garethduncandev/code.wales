@@ -1,0 +1,35 @@
+svg {
+  rect {
+    &.parenthesis {
+      fill: var(--parenthesis);
+    }
+    &.access-modifier {
+      fill: var(--access-modifier);
+    }
+    &.variable-declaration-const {
+      fill: var(--variable-declaration-const);
+    }
+    &.variable-declaration-let {
+      fill: var(--variable-declaration-let);
+    }
+    &.function {
+      fill: var(--function);
+    }
+    &.primitive-type {
+      fill: var(--primitive-type);
+    }
+    &.conditional-statement {
+      fill: var(--conditional-statement);
+    }
+    &.jump-statement {
+      fill: var(--jump-statement);
+    }
+    &.comment {
+      fill: var(--comment);
+    }
+    &.space {
+      fill: none;
+      opacity: 0;
+    }
+  }
+}
