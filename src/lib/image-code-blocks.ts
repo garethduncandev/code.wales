@@ -1,8 +1,7 @@
 import { Column } from './column.js';
-import { imageOnLoadAsync } from './image-async.js';
 
 export class ImageCodeBlocks {
-  private div!: HTMLElement;
+  private outputElement!: HTMLElement;
   private previousClassName: string | undefined = undefined;
 
   public constructor(
@@ -18,19 +17,47 @@ export class ImageCodeBlocks {
     }
   }
 
+  public createFromImgTag(elementId: string, outputElementId: string): void {
+    this.outputElement = this.getOutputElement(outputElementId);
+    const img = this.getImageFromImgElement(elementId);
+    this.createFromImage(img);
+  }
+
   public async createFromImageSrc(
     src: string,
     outputElementId: string
   ): Promise<void> {
-    const div = document.getElementById(outputElementId);
-    if (!div) {
+    this.outputElement = this.getOutputElement(outputElementId);
+    const image = await this.getImageFromSrc(src);
+    this.createFromImage(image);
+  }
+
+  private getOutputElement(outputElementId: string): HTMLElement {
+    const outputElement = document.getElementById(outputElementId);
+    if (!outputElement) {
       throw new Error('Could not get div');
     }
-    this.div = div;
-    const image = new Image();
-    image.src = src;
-    await imageOnLoadAsync(image);
-    this.createFromImage(image);
+    return outputElement;
+  }
+
+  private getImageFromSrc(url: string): Promise<HTMLImageElement> {
+    return new Promise((resolve, reject) => {
+      const image = new Image();
+      image.onload = (): void => resolve(image);
+      image.onerror = reject;
+      image.src = url;
+    });
+  }
+
+  private getImageFromImgElement(elementId: string): HTMLImageElement {
+    const img = document.getElementById(elementId);
+    if (!img) {
+      throw new Error('Could not get element');
+    }
+    if (!(img instanceof HTMLImageElement)) {
+      throw new Error('Element is not an image');
+    }
+    return img;
   }
 
   private createFromImage(image: HTMLImageElement): void {
@@ -54,7 +81,7 @@ export class ImageCodeBlocks {
 
     outputSvg.getElementById('code-effect-group')?.append(...codeBlocks);
 
-    this.div.appendChild(outputSvg);
+    this.outputElement.appendChild(outputSvg);
   }
 
   private createdOutputSVGElement(
