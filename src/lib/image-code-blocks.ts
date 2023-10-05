@@ -20,7 +20,7 @@ export class ImageCodeBlocks {
   public createFromImgTag(elementId: string, outputElementId: string): void {
     this.outputElement = this.getOutputElement(outputElementId);
     const img = this.getImageFromImgElement(elementId);
-    this.createFromImage(img);
+    this.createFromImage(img, outputElementId);
   }
 
   public async createFromImageSrc(
@@ -29,7 +29,7 @@ export class ImageCodeBlocks {
   ): Promise<void> {
     this.outputElement = this.getOutputElement(outputElementId);
     const image = await this.getImageFromSrc(src);
-    this.createFromImage(image);
+    this.createFromImage(image, outputElementId);
   }
 
   private getOutputElement(outputElementId: string): HTMLElement {
@@ -60,7 +60,10 @@ export class ImageCodeBlocks {
     return img;
   }
 
-  private createFromImage(image: HTMLImageElement): void {
+  private createFromImage(
+    image: HTMLImageElement,
+    outputElementId: string
+  ): void {
     const context = this.createContext(image.width, image.height);
     context.drawImage(image, 0, 0);
     const rowsCount = image.height / this.blockHeight;
@@ -79,7 +82,9 @@ export class ImageCodeBlocks {
     const codeBlocks = this.generateCodeBlocks(grid);
     const outputSvg = this.createdOutputSVGElement(image.width, image.height);
 
-    outputSvg.getElementById('code-effect-group')?.append(...codeBlocks);
+    outputSvg
+      .getElementById(`${outputElementId}-code-effect-group`)
+      ?.append(...codeBlocks);
 
     this.outputElement.appendChild(outputSvg);
   }
@@ -89,13 +94,15 @@ export class ImageCodeBlocks {
     height: number
   ): SVGSVGElement {
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    console.log('look here', svg);
     svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
     svg.setAttribute('xmlns:svg', 'http://www.w3.org/2000/svg');
     svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-    g.setAttribute('id', 'code-effect-group');
-    svg.appendChild(g);
+    const elementNS = document.createElementNS(
+      'http://www.w3.org/2000/svg',
+      'g'
+    );
+    elementNS.setAttribute('id', 'code-effect-group');
+    svg.appendChild(elementNS);
     return svg;
   }
 
