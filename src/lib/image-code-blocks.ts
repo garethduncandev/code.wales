@@ -80,10 +80,14 @@ export class ImageCodeBlocks {
     );
 
     const codeBlocks = this.generateCodeBlocks(grid);
-    const outputSvg = this.createdOutputSVGElement(image.width, image.height);
+    const outputSvg = this.createdOutputSVGElement(
+      image.width,
+      image.height,
+      outputElementId
+    );
 
     outputSvg
-      .getElementById(`${outputElementId}-code-effect-group`)
+      .getElementById(`${outputElementId}-code-blocks-group`)
       ?.append(...codeBlocks);
 
     this.outputElement.appendChild(outputSvg);
@@ -91,7 +95,8 @@ export class ImageCodeBlocks {
 
   private createdOutputSVGElement(
     width: number,
-    height: number
+    height: number,
+    outputElementId: string
   ): SVGSVGElement {
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
@@ -101,7 +106,7 @@ export class ImageCodeBlocks {
       'http://www.w3.org/2000/svg',
       'g'
     );
-    elementNS.setAttribute('id', 'code-effect-group');
+    elementNS.setAttribute('id', `${outputElementId}-code-blocks-group`);
     svg.appendChild(elementNS);
     return svg;
   }
