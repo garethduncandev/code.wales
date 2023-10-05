@@ -15,5 +15,6 @@ const codeEffectSVG = new ImageCodeBlocks(
   true
 );
 
+// If loading from a file
 // void codeEffectSVG.createFromImageSrc('/wales.svg', 'output').then(() => {});
 codeEffectSVG.createFromImgTag('input', 'output');
