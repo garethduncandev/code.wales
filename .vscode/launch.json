@@ -13,7 +13,7 @@
       "serverReadyAction": {
         "action": "debugWithEdge",
         "pattern": "Local:   http://localhost:([0-9]+)/",
-        "uriFormat": "http://localhost:%s/src/",
+        "uriFormat": "http://localhost:%s/",
         "killOnServerStop": true
       },
       "console": "internalConsole"

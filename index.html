@@ -1,15 +1,24 @@
 <!doctype html>
 <html>
   <head>
+    <link rel="preload" as="image" href="/favicon.svg" />
     <meta charset="UTF-8" />
     <title>code.wales 🏴󠁧󠁢󠁷󠁬󠁳󠁿</title>
     <link rel="stylesheet" href="/src/app.css" />
     <link rel="stylesheet" href="/src/image-code-blocks.css" />
     <script type="module" src="/src/app.ts"></script>
-    <link rel="icon" type="image/x-icon" href="/wales.svg" />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.svg" />
   </head>
   <body>
     <main id="container">
+      <img
+        style="display: none"
+        height="309"
+        width="246"
+        id="input"
+        src="/wales.png"
+      />
       <div id="output"></div>
     </main>
   </body>
