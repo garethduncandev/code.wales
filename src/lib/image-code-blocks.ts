@@ -70,8 +70,6 @@ export class ImageCodeBlocks {
     const columnsCount = image.width / this.accuracy;
     const grid = this.splitIntoGrid(
       context,
-      image.width,
-      image.height,
       rowsCount,
       columnsCount,
       this.codeBlockMinWidth,
@@ -127,8 +125,6 @@ export class ImageCodeBlocks {
 
   private splitIntoGrid(
     context: CanvasRenderingContext2D,
-    width: number,
-    height: number,
     rowsCount: number,
     columnsCount: number,
     codeBlockMinWidth: number,
@@ -141,8 +137,6 @@ export class ImageCodeBlocks {
       let startX = 0;
       const columns: Column[] = [];
       for (let x = 0; x < columnsCount; x++) {
-        // get all block positions to then calculate the first and last block position for each line
-
         const pixelsContainColor = this.areaContainsColour(
           context,
           startX,
@@ -151,38 +145,17 @@ export class ImageCodeBlocks {
           this.blockHeight
         );
 
-        if (!pixelsContainColor) {
-          columns.push({
-            startX,
-            startY,
-            fill: false,
-            blockWidth: this.accuracy,
-            merged: false,
-          });
-          startX += this.accuracy;
-          continue;
-        }
-
         columns.push({
           startX,
           startY,
-          fill: true,
+          fill: pixelsContainColor,
           blockWidth: this.accuracy,
           merged: false,
         });
-
         startX += this.accuracy;
-        if (startX >= width) {
-          break;
-        }
       }
-
-      grid.push(columns);
-
       startY += this.blockHeight;
-      if (startY >= height) {
-        break;
-      }
+      grid.push(columns);
     }
 
     this.mergeColumns(grid);
