@@ -15,6 +15,7 @@ body {
   --conditional-statement: rgb(197, 134, 160);
   --jump-statement: rgb(189, 87, 129);
   --comment: rgb(106, 153, 81);
+  --lambda-expression: rgb(0, 89, 206);
 
   height: 100%;
   width: 100%;

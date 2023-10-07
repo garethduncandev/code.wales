@@ -3,5 +3,4 @@ export interface Column {
   startY: number;
   fill: boolean;
   blockWidth: number;
-  merged: boolean;
 }

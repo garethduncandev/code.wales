@@ -27,9 +27,8 @@ svg {
     &.comment {
       fill: var(--comment);
     }
-    &.space {
-      fill: none;
-      opacity: 0;
+    &.lambda-expression {
+      fill: var(--lambda-expression);
     }
   }
 }

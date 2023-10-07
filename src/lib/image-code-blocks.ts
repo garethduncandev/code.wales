@@ -1,100 +1,40 @@
 import { Column } from './column.js';
 
 export class ImageCodeBlocks {
-  private outputElement!: HTMLElement;
   private previousClassName: string | undefined = undefined;
 
   public constructor(
-    private accuracy: number,
     private blockHeight: number,
     private codeBlockMinWidth: number,
     private codeBlockMaxWidth: number,
-    private spacing: number,
-    private monotype: boolean
-  ) {
-    if (this.monotype) {
-      this.accuracy = this.codeBlockMinWidth;
-    }
-  }
+    private padding: number
+  ) {}
 
-  public createFromImgTag(elementId: string, outputElementId: string): void {
-    this.outputElement = this.getOutputElement(outputElementId);
-    const img = this.getImageFromImgElement(elementId);
-    this.createFromImage(img, outputElementId);
-  }
-
-  public async createFromImageSrc(
-    src: string,
-    outputElementId: string
-  ): Promise<void> {
-    this.outputElement = this.getOutputElement(outputElementId);
-    const image = await this.getImageFromSrc(src);
-    this.createFromImage(image, outputElementId);
-  }
-
-  private getOutputElement(outputElementId: string): HTMLElement {
-    const outputElement = document.getElementById(outputElementId);
-    if (!outputElement) {
-      throw new Error('Could not get div');
-    }
-    return outputElement;
-  }
-
-  private getImageFromSrc(url: string): Promise<HTMLImageElement> {
-    return new Promise((resolve, reject) => {
-      const image = new Image();
-      image.onload = (): void => resolve(image);
-      image.onerror = reject;
-      image.src = url;
-    });
-  }
-
-  private getImageFromImgElement(elementId: string): HTMLImageElement {
-    const img = document.getElementById(elementId);
-    if (!img) {
-      throw new Error('Could not get element');
-    }
-    if (!(img instanceof HTMLImageElement)) {
-      throw new Error('Element is not an image');
-    }
-    return img;
-  }
-
-  private createFromImage(
-    image: HTMLImageElement,
-    outputElementId: string
-  ): void {
+  public create(id: string, image: HTMLImageElement): SVGSVGElement {
     const context = this.createContext(image.width, image.height);
     context.drawImage(image, 0, 0);
     const rowsCount = image.height / this.blockHeight;
-    const columnsCount = image.width / this.accuracy;
-    const grid = this.splitIntoGrid(
+    const columnsCount = image.width / this.codeBlockMinWidth;
+
+    const result = this.createSVGRectElements(
       context,
       rowsCount,
       columnsCount,
       this.codeBlockMinWidth,
-      this.codeBlockMaxWidth,
-      this.monotype
+      this.codeBlockMaxWidth
     );
 
-    const codeBlocks = this.generateCodeBlocks(grid);
-    const outputSvg = this.createdOutputSVGElement(
-      image.width,
-      image.height,
-      outputElementId
-    );
+    const outputSvg = this.createSVGElement(image.width, image.height, id);
 
-    outputSvg
-      .getElementById(`${outputElementId}-code-blocks-group`)
-      ?.append(...codeBlocks);
+    outputSvg.getElementById(`${id}-code-blocks-group`)?.append(...result);
 
-    this.outputElement.appendChild(outputSvg);
+    return outputSvg;
   }
 
-  private createdOutputSVGElement(
+  private createSVGElement(
     width: number,
     height: number,
-    outputElementId: string
+    id: string
   ): SVGSVGElement {
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
@@ -104,7 +44,7 @@ export class ImageCodeBlocks {
       'http://www.w3.org/2000/svg',
       'g'
     );
-    elementNS.setAttribute('id', `${outputElementId}-code-blocks-group`);
+    elementNS.setAttribute('id', `${id}-code-blocks-group`);
     svg.appendChild(elementNS);
     return svg;
   }
@@ -123,140 +63,147 @@ export class ImageCodeBlocks {
     return context;
   }
 
-  private splitIntoGrid(
+  private createSVGRectElements(
     context: CanvasRenderingContext2D,
     rowsCount: number,
     columnsCount: number,
     codeBlockMinWidth: number,
-    codeBlockMaxWidth: number,
-    monotype: boolean
-  ): Column[][] {
+    codeBlockMaxWidth: number
+  ): SVGRectElement[] {
+    // work through each row
     let startY = 0;
-    const grid: Column[][] = [];
+
+    const svgElements: SVGRectElement[] = [];
+    // work through each column
     for (let y = 0; y < rowsCount; y++) {
-      let startX = 0;
-      const columns: Column[] = [];
-      for (let x = 0; x < columnsCount; x++) {
-        const pixelsContainColor = this.areaContainsColour(
-          context,
-          startX,
-          startY,
-          this.accuracy,
-          this.blockHeight
-        );
-
-        columns.push({
-          startX,
-          startY,
-          fill: pixelsContainColor,
-          blockWidth: this.accuracy,
-          merged: false,
-        });
-        startX += this.accuracy;
-      }
-      startY += this.blockHeight;
-      grid.push(columns);
-    }
-
-    this.mergeColumns(grid);
-
-    const filteredGrid: Column[][] = [];
-    for (const row of grid) {
-      const filteredColumns = row.filter(
-        (column) => !column.merged && column.fill
+      // create svg elements
+      const svgRowColumnElements = this.createRowColumnSvgElements(
+        context,
+        columnsCount,
+        startY,
+        codeBlockMinWidth,
+        codeBlockMaxWidth
       );
-      filteredGrid.push(filteredColumns);
-    }
+      svgElements.push(...svgRowColumnElements);
 
-    // split each row into random length blocks
-    const finalBlocks = this.splitIntoRandomLengthBlocks(
-      filteredGrid,
+      startY += this.blockHeight;
+    }
+    return svgElements;
+  }
+
+  private createRowColumnSvgElements(
+    context: CanvasRenderingContext2D,
+    columnsCount: number,
+    startY: number,
+    codeBlockMinWidth: number,
+    codeBlockMaxWidth: number
+  ): SVGRectElement[] {
+    let columns = this.splitRowIntoColumns(context, columnsCount, startY);
+
+    // merge filled columns next to each other together
+    // this allows us to calculate the min and max length to work with
+    columns = this.mergeRowColumns(columns);
+
+    // split columns into random length blocks for code effect
+    columns = this.splitColumnsIntoRandomLengthColumns(
+      columns,
       codeBlockMinWidth,
-      codeBlockMaxWidth,
-      monotype
+      codeBlockMaxWidth
     );
 
-    return finalBlocks;
+    // create svg elements
+    const svgRowColumnElements = this.createSvgElements(columns);
+    return svgRowColumnElements;
   }
 
-  /// <summary>
-  /// Merge columns e.g. columns that have fill true and next to each other, combine startX values
-  /// </summary>
-  private mergeColumns(grid: Column[][]): void {
-    for (let y = 0; y < grid.length; y++) {
-      let previousFill = false;
-      let currentBlockWidth = 0;
-      let blockToMergeWithIndex = -1;
-      for (let x = 0; x < grid[y].length; x++) {
-        const fill = grid[y][x].fill;
-        if (fill && previousFill) {
-          const column = grid[y][x];
-          column.merged = true;
-          // update blockWidth of previous block
-          const previousColumn = grid[y][blockToMergeWithIndex];
-          previousColumn.blockWidth = currentBlockWidth + this.accuracy;
-          currentBlockWidth = previousColumn.blockWidth;
-          previousFill = true;
-          continue;
+  private splitRowIntoColumns(
+    context: CanvasRenderingContext2D,
+    columnsCount: number,
+    startY: number
+  ): Column[] {
+    let startX = 0;
+    const columns: Column[] = [];
+    for (let x = 0; x < columnsCount; x++) {
+      const pixelsContainColor = this.areaContainsColour(
+        context,
+        startX,
+        startY,
+        this.codeBlockMinWidth,
+        this.blockHeight
+      );
+
+      columns.push({
+        startX,
+        startY,
+        fill: pixelsContainColor,
+        blockWidth: this.codeBlockMinWidth,
+      });
+      startX += this.codeBlockMinWidth;
+    }
+    return columns;
+  }
+
+  private mergeRowColumns(columns: Column[]): Column[] {
+    const mergedColumns: Column[] = [];
+
+    for (let x = 0; x < columns.length; x++) {
+      const currentColumn = columns[x];
+
+      if (currentColumn.fill) {
+        let nextIndex = x + 1;
+        let nextColumn = columns[nextIndex];
+
+        while (
+          nextColumn &&
+          nextColumn.fill &&
+          nextColumn.startX === currentColumn.startX + currentColumn.blockWidth
+        ) {
+          currentColumn.blockWidth += nextColumn.blockWidth;
+          nextIndex++;
+          nextColumn = columns[nextIndex];
         }
-        if (fill) {
-          const column = grid[y][x];
-          blockToMergeWithIndex = x;
-          //previousStartX = column.startX;
-          currentBlockWidth = column.blockWidth;
-          previousFill = true;
-          column.merged = false;
-          continue;
-        }
-        currentBlockWidth = 0;
-        previousFill = false;
-        blockToMergeWithIndex = -1;
+
+        mergedColumns.push(currentColumn);
+        x = nextIndex - 1;
+      } else {
+        mergedColumns.push(currentColumn);
       }
     }
+
+    return mergedColumns;
   }
 
-  private splitIntoRandomLengthBlocks(
-    grid: Column[][],
+  private splitColumnsIntoRandomLengthColumns(
+    columns: Column[],
     codeBlockMinWidth: number,
-    codeBlockMaxWidth: number,
-    monotype: boolean
-  ): Column[][] {
-    // foreach row
-    const rows: Column[][] = [];
-    for (let y = 0; y < grid.length; y++) {
-      // foreach column
-      const columns: Column[] = [];
-      for (let x = 0; x < grid[y].length; x++) {
-        const blockWidth = grid[y][x].blockWidth;
-        const newBlockWidths = this.randomNumbersWithSum(
-          blockWidth,
-          codeBlockMinWidth,
-          codeBlockMaxWidth,
-          monotype
-        );
+    codeBlockMaxWidth: number
+  ): Column[] {
+    const result: Column[] = [];
+    for (let x = 0; x < columns.length; x++) {
+      const blockWidth = columns[x].blockWidth;
+      const newBlockWidths = this.randomNumbersWithSum(
+        blockWidth,
+        codeBlockMinWidth,
+        codeBlockMaxWidth
+      );
 
-        let newStartX = grid[y][x].startX;
+      let newStartX = columns[x].startX;
 
-        for (let w = 0; w < newBlockWidths.length; w++) {
-          const width = newBlockWidths[w];
+      for (let w = 0; w < newBlockWidths.length; w++) {
+        const width = newBlockWidths[w];
 
-          const newColumn: Column = {
-            fill: true,
-            merged: true,
-            startY: grid[y][x].startY,
-            startX: newStartX,
-            blockWidth: width,
-          };
+        const newColumn: Column = {
+          fill: true,
+          startY: columns[x].startY,
+          startX: newStartX,
+          blockWidth: width,
+        };
 
-          newStartX += width;
-          columns.push(newColumn);
-        }
+        newStartX += width;
+        result.push(newColumn);
       }
-
-      rows.push(columns);
     }
-
-    return rows;
+    return result;
   }
 
   private areaContainsColour(
@@ -293,24 +240,24 @@ export class ImageCodeBlocks {
     return notWhiteOrTransparent;
   }
 
-  private generateCodeBlocks(grid: Column[][]): SVGRectElement[] {
+  private createSvgElements(columns: Column[]): SVGRectElement[] {
     const rectangles: SVGRectElement[] = [];
-    for (let y = 0; y < grid.length; y++) {
-      for (let x = 0; x < grid[y].length; x++) {
-        const fill = grid[y][x].fill;
-        if (fill) {
-          const rect = this.createRectangle(
-            grid[y][x].startX,
-            grid[y][x].startY,
-            grid[y][x].blockWidth,
-            this.blockHeight,
-            this.codeBlockMinWidth,
-            this.codeBlockMaxWidth
-          );
-          rectangles.push(rect);
-        }
+
+    for (let x = 0; x < columns.length; x++) {
+      const fill = columns[x].fill;
+      if (fill) {
+        const rect = this.createRectangle(
+          columns[x].startX,
+          columns[x].startY,
+          columns[x].blockWidth,
+          this.blockHeight,
+          this.codeBlockMinWidth,
+          this.codeBlockMaxWidth
+        );
+        rectangles.push(rect);
       }
     }
+
     return rectangles;
   }
 
@@ -323,8 +270,8 @@ export class ImageCodeBlocks {
     codeBlockMaxWidth: number
   ): SVGRectElement {
     const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-    rect.setAttribute('width', (codeBlockWidth - this.spacing).toString());
-    rect.setAttribute('height', (codeBlockHeight - this.spacing).toString());
+    rect.setAttribute('width', (codeBlockWidth - this.padding).toString());
+    rect.setAttribute('height', (codeBlockHeight - this.padding).toString());
     rect.setAttribute('x', startX.toString());
     rect.setAttribute('y', startY.toString());
 
@@ -346,7 +293,10 @@ export class ImageCodeBlocks {
     let className: string = '';
     do {
       if (blockWidth === codeBlockMinWidth) {
-        className = this.chooseRandomString(['parenthesis', 'space']);
+        className = this.chooseRandomString([
+          'parenthesis',
+          'lambda-expression',
+        ]);
         continue;
       }
 
@@ -378,18 +328,15 @@ export class ImageCodeBlocks {
   private randomNumbersWithSum(
     sum: number,
     codeBlockMinWidth: number,
-    codeBlockMaxWidth: number,
-    monotype: boolean
+    codeBlockMaxWidth: number
   ): number[] {
     let availableWidths: number[] = [];
-    if (monotype) {
-      const numberOfBlocks = Math.floor(sum / codeBlockMinWidth);
-      availableWidths = Array.from(Array(numberOfBlocks).keys()).map(
-        (m) => m * codeBlockMinWidth
-      );
-    } else {
-      availableWidths = Array.from(Array(sum).keys());
-    }
+
+    const numberOfBlocks = Math.floor(sum / codeBlockMinWidth);
+    availableWidths = Array.from(Array(numberOfBlocks).keys()).map(
+      (m) => m * codeBlockMinWidth
+    );
+    availableWidths.push(sum - codeBlockMinWidth * numberOfBlocks);
 
     const numbers: number[] = [];
     let remainingSum = sum;
