@@ -1,7 +1,11 @@
-import { Column } from './column.js';
-import { HyperLink } from './link.js';
+interface Column {
+  startX: number;
+  startY: number;
+  fill: boolean;
+  blockWidth: number;
+}
 
-export class ImageCodeBlocks {
+export class CodeEffect {
   private previousClassName: string | undefined = undefined;
 
   public constructor(
@@ -11,11 +15,7 @@ export class ImageCodeBlocks {
     private padding: number
   ) {}
 
-  public create(
-    id: string,
-    image: HTMLImageElement,
-    links: HyperLink[]
-  ): SVGSVGElement {
+  public create(id: string, image: HTMLImageElement): SVGSVGElement {
     const context = this.createContext(image.width, image.height);
     context.drawImage(image, 0, 0);
     const rowsCount = image.height / this.blockHeight;
@@ -28,15 +28,6 @@ export class ImageCodeBlocks {
       this.codeBlockMinWidth,
       this.codeBlockMaxWidth
     );
-
-    const h = Math.floor(result.length / links.length);
-    for (let x = 0; x < links.length; x++) {
-      const resultIndex = x * h;
-
-      const r = result[resultIndex];
-
-      r.setAttribute('data-link', links[x].url);
-    }
 
     const outputSvg = this.createSVGElement(image.width, image.height, id);
 
