@@ -27,7 +27,10 @@ body {
 
 nav {
   text-align: center;
+  margin: 1rem;
   ul {
+    margin: 0;
+    padding: 0;
     list-style: none;
     li {
       a {
@@ -35,10 +38,6 @@ nav {
         font-size: 1.5rem;
         text-decoration: none;
         color: white;
-
-        text-decoration: underline;
-        text-decoration-color: red;
-        text-decoration-thickness: 0.3rem;
 
         transition: all 0.2s ease-in-out;
       }
