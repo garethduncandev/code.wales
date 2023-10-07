@@ -1,4 +1,5 @@
 import { ImageCodeBlocks } from './lib/image-code-blocks.js';
+import { HyperLink } from './lib/link.js';
 
 const codeBlockHeight = 13;
 const codeBlockMinWidth = codeBlockHeight;
@@ -14,6 +15,13 @@ const codeEffectSVG = new ImageCodeBlocks(
 
 const img = document.getElementById('input') as HTMLImageElement;
 const output = document.getElementById('output');
+const links: HyperLink[] = [
+  {
+    name: 'GitHub',
+    description: 'Source code',
+    url: 'https://github.com/garethduncandev/code.wales',
+  },
+];
 
-const svg = codeEffectSVG.create('wales', img);
+const svg = codeEffectSVG.create('wales', img, links);
 output?.appendChild(svg);

@@ -1,8 +1,8 @@
 body {
-  height: 100vh;
   padding: 0;
   margin: 0;
   background-color: rgb(31, 31, 31);
+  font-family: monospace;
 }
 
 #output {
@@ -16,25 +16,35 @@ body {
   --jump-statement: rgb(189, 87, 129);
   --comment: rgb(106, 153, 81);
   --lambda-expression: rgb(0, 89, 206);
-
-  height: 100%;
-  width: 100%;
-  height: 100%;
-  max-height: 90vh;
-  max-width: 90vw;
+  margin-left: 1rem;
+  margin-right: 1rem;
   svg {
+    margin-top: 5rem;
+    max-height: calc(100vh - 10rem);
     width: 100%;
-    height: 100%;
   }
 }
 
-#container {
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+nav {
+  text-align: center;
+  ul {
+    list-style: none;
+    li {
+      a {
+        margin: 1rem;
+        font-size: 1.5rem;
+        text-decoration: none;
+        color: white;
+
+        text-decoration: underline;
+        text-decoration-color: red;
+        text-decoration-thickness: 0.3rem;
+
+        transition: all 0.2s ease-in-out;
+      }
+      a:hover {
+        font-size: 1.8rem;
+      }
+    }
+  }
 }

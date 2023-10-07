@@ -1,4 +1,5 @@
 import { Column } from './column.js';
+import { HyperLink } from './link.js';
 
 export class ImageCodeBlocks {
   private previousClassName: string | undefined = undefined;
@@ -10,7 +11,11 @@ export class ImageCodeBlocks {
     private padding: number
   ) {}
 
-  public create(id: string, image: HTMLImageElement): SVGSVGElement {
+  public create(
+    id: string,
+    image: HTMLImageElement,
+    links: HyperLink[]
+  ): SVGSVGElement {
     const context = this.createContext(image.width, image.height);
     context.drawImage(image, 0, 0);
     const rowsCount = image.height / this.blockHeight;
@@ -23,6 +28,15 @@ export class ImageCodeBlocks {
       this.codeBlockMinWidth,
       this.codeBlockMaxWidth
     );
+
+    const h = Math.floor(result.length / links.length);
+    for (let x = 0; x < links.length; x++) {
+      const resultIndex = x * h;
+
+      const r = result[resultIndex];
+
+      r.setAttribute('data-link', links[x].url);
+    }
 
     const outputSvg = this.createSVGElement(image.width, image.height, id);
 
@@ -293,11 +307,8 @@ export class ImageCodeBlocks {
     let className: string = '';
     do {
       if (blockWidth === codeBlockMinWidth) {
-        className = this.chooseRandomString([
-          'parenthesis',
-          'lambda-expression',
-        ]);
-        continue;
+        className = this.chooseRandomString(['parenthesis']);
+        break;
       }
 
       if (blockWidth === codeBlockMaxWidth) {
@@ -330,26 +341,16 @@ export class ImageCodeBlocks {
     codeBlockMinWidth: number,
     codeBlockMaxWidth: number
   ): number[] {
-    let availableWidths: number[] = [];
-
     const numberOfBlocks = Math.floor(sum / codeBlockMinWidth);
-    availableWidths = Array.from(Array(numberOfBlocks).keys()).map(
+
+    const availableWidths = Array.from(Array(numberOfBlocks).keys()).map(
       (m) => m * codeBlockMinWidth
     );
-    availableWidths.push(sum - codeBlockMinWidth * numberOfBlocks);
 
     const numbers: number[] = [];
     let remainingSum = sum;
-    while (remainingSum > codeBlockMinWidth) {
-      // e.g. if remaining length is 5 and codeBlockMinWidth is 3, then we can only have 2 blocks left
-      // leaving us with a 3 and a 2
-      // In this case, just add the remaining sum as a block
-      // won't be needed if we make all values a multiple of codeBlockMinWidth
-      if (remainingSum < codeBlockMinWidth * 2) {
-        numbers.push(remainingSum);
-        break;
-      }
 
+    while (remainingSum > codeBlockMinWidth) {
       const randomNumber = this.generateRandomNumber(
         availableWidths,
         codeBlockMinWidth,
