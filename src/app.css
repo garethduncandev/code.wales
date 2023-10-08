@@ -5,6 +5,18 @@ body {
   font-family: monospace;
 }
 
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 #output {
   --parenthesis: rgb(0, 105, 243);
   --access-modifier: rgb(0, 122, 216);
@@ -16,19 +28,19 @@ body {
   --jump-statement: rgb(189, 87, 129);
   --comment: rgb(106, 153, 81);
   --lambda-expression: rgb(0, 89, 206);
-
   margin-left: 1rem;
   margin-right: 1rem;
   svg {
-    margin-top: 5rem;
-    max-height: calc(100dvh - 10rem);
-    width: 100%;
+    margin-top: 1rem;
+    max-height: calc(100dvh - 15rem);
+    width: 100vw;
   }
 }
 
 nav {
   text-align: center;
   margin: 1rem;
+
   ul {
     margin: 0;
     padding: 0;
