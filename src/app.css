@@ -22,7 +22,6 @@ body {
   svg {
     margin-top: 5rem;
     max-height: calc(100dvh - 10rem);
-    max-height: calc(100vh - 10rem);
     width: 100%;
   }
 }
