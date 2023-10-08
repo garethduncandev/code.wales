@@ -32,8 +32,8 @@ body {
   margin-right: 1rem;
   svg {
     margin-top: 1rem;
-    max-height: calc(100dvh - 15rem);
-    width: 100vw;
+    max-height: calc(100dvh - 10rem);
+    width: calc(100dvw - 10rem);
   }
 }
 
