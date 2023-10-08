@@ -33,17 +33,22 @@ nav {
     margin: 0;
     padding: 0;
     list-style: none;
+
     li {
+      display: inline-block;
       a {
         margin: 1rem;
         font-size: 1.5rem;
         text-decoration: none;
         color: white;
-
-        transition: all 0.2s ease-in-out;
+        text-decoration: underline;
+        text-decoration-thickness: 0.3rem;
+        text-decoration-color: rgb(0, 105, 243);
       }
       a:hover {
-        font-size: 1.8rem;
+        text-decoration: underline;
+        text-decoration-thickness: 0.3rem;
+        text-decoration-color: rgb(79, 193, 255);
       }
     }
   }
