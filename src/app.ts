@@ -4,12 +4,14 @@ const codeBlockHeight = 13;
 const codeBlockMinWidth = codeBlockHeight;
 const codeBlockMaxWidth = codeBlockMinWidth * 4;
 const padding = codeBlockHeight / 3;
+const styleVariationsCount = 3;
 
 const blocks = new Blocks(
   codeBlockHeight,
   codeBlockMinWidth,
   codeBlockMaxWidth,
-  padding
+  padding,
+  styleVariationsCount
 );
 
 const img = document.getElementById('input') as HTMLImageElement;
