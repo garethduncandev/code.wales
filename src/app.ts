@@ -1,11 +1,11 @@
-import { CodeEffect } from './lib/code-effect.js';
+import Blocks from '@garethduncandev/blocks';
 
 const codeBlockHeight = 13;
 const codeBlockMinWidth = codeBlockHeight;
 const codeBlockMaxWidth = codeBlockMinWidth * 4;
 const padding = codeBlockHeight / 3;
 
-const codeEffect = new CodeEffect(
+const blocks = new Blocks(
   codeBlockHeight,
   codeBlockMinWidth,
   codeBlockMaxWidth,
@@ -15,5 +15,6 @@ const codeEffect = new CodeEffect(
 const img = document.getElementById('input') as HTMLImageElement;
 const output = document.getElementById('output');
 
-const svg = codeEffect.create('wales', img);
+const svg = blocks.create('wales', img);
+
 output?.appendChild(svg);
