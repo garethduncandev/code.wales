@@ -14,9 +14,11 @@ const blocks = new Blocks(
   styleVariationsCount
 );
 
-const img = document.getElementById('input') as HTMLImageElement;
 const output = document.getElementById('output');
-
-const svg = blocks.create('wales', img);
-
-output?.appendChild(svg);
+const image = new Image(246, 309);
+image.src = '/wales.png';
+image.alt = 'Outline of Wales';
+image.onload = (): void => {
+  const svg = blocks.create('wales', image);
+  output?.appendChild(svg);
+};

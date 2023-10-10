@@ -38,21 +38,20 @@ body {
 }
 
 nav {
-  text-align: center;
   margin: 1rem;
 
-  ul {
+  table {
     margin: 0;
     padding: 0;
-    list-style: none;
 
-    li {
-      display: inline-block;
+    td {
+      font-size: 1.5rem;
+      color: white;
       a {
         margin: 1rem;
-        font-size: 1.5rem;
-        text-decoration: none;
         color: white;
+        text-decoration: none;
+
         text-decoration: underline;
         text-decoration-thickness: 0.3rem;
         text-decoration-color: rgb(0, 105, 243);
