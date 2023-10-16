@@ -20,6 +20,7 @@ container?.classList.add('loading');
 const image = new Image(246, 309);
 image.src = '/wales.png';
 image.alt = 'Outline of Wales';
+image.title = 'Outline of Wales';
 image.onload = (): void => {
   const svg = blocks.create('wales', image);
   output?.appendChild(svg);
