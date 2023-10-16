@@ -15,10 +15,14 @@ const blocks = new Blocks(
 );
 
 const output = document.getElementById('output');
+const container = document.getElementById('container');
+container?.classList.add('loading');
 const image = new Image(246, 309);
 image.src = '/wales.png';
 image.alt = 'Outline of Wales';
 image.onload = (): void => {
   const svg = blocks.create('wales', image);
   output?.appendChild(svg);
+  container?.classList.remove('loading');
+  container?.classList.add('loaded');
 };
