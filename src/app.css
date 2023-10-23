@@ -18,16 +18,6 @@ body {
 }
 
 #output {
-  --parenthesis: rgb(0, 105, 243);
-  --access-modifier: rgb(0, 122, 216);
-  --variable-declaration-const: rgb(79, 193, 255);
-  --variable-declaration-let: rgb(156, 220, 254);
-  --function: rgb(220, 220, 138);
-  --primitive-type: rgb(77, 201, 176);
-  --conditional-statement: rgb(197, 134, 160);
-  --jump-statement: rgb(189, 87, 129);
-  --comment: rgb(106, 153, 81);
-  --lambda-expression: rgb(0, 89, 206);
   margin-left: 1rem;
   margin-right: 1rem;
   svg {
@@ -65,20 +55,6 @@ nav {
   }
 }
 
-.loaded {
-  /* fade out div */
-  animation: fadeIn 0.5s;
-}
-
 .loading {
   display: none;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }

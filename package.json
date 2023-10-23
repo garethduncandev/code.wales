@@ -30,6 +30,6 @@
     "vite": "^4.4.9"
   },
   "dependencies": {
-    "@garethduncandev/blocks": "^1.1.2"
+    "@garethduncandev/blocks": "^2.0.1"
   }
 }
