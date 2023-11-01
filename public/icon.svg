@@ -1,0 +1,409 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"
+    viewBox="-31.5 -1 309 309">
+    <g id="wales-code-blocks-group">
+        <rect width="7" height="7" x="70" y="0" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="17" height="7" x="80" y="0" rx="1"
+            style="fill: rgb(79, 193, 255);"></rect>
+        <rect width="17" height="7" x="60" y="10" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="27" height="7" x="80" y="10" rx="1"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="7" height="7" x="130" y="10" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="17" height="7" x="170" y="10" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="7" height="7" x="190" y="10" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="37" height="7" x="60" y="20" rx="1"
+            style="fill: rgb(220, 220, 138);"></rect>
+        <rect width="27" height="7" x="100" y="20" rx="1"
+            style="fill: rgb(77, 201, 176);"></rect>
+        <rect width="7" height="7" x="130" y="20" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="17" height="7" x="140" y="20" rx="1"
+            style="fill: rgb(79, 193, 255);"></rect>
+        <rect width="7" height="7" x="160" y="20" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="17" height="7" x="170" y="20" rx="1"
+            style="fill: rgb(79, 193, 255);"></rect>
+        <rect width="7" height="7" x="190" y="20" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="7" height="7" x="200" y="20" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="7" height="7" x="70" y="30" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="17" height="7" x="80" y="30" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="27" height="7" x="100" y="30" rx="1"
+            style="fill: rgb(189, 87, 129);"></rect>
+        <rect width="37" height="7" x="130" y="30" rx="1"
+            style="fill: rgb(106, 153, 81);"></rect>
+        <rect width="27" height="7" x="170" y="30" rx="1"
+            style="fill: rgb(189, 87, 129);"></rect>
+        <rect width="7" height="7" x="200" y="30" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="7" height="7" x="210" y="30" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="7" height="7" x="90" y="40" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="37" height="7" x="100" y="40" rx="1"
+            style="fill: rgb(106, 153, 81);"></rect>
+        <rect width="17" height="7" x="140" y="40" rx="1"
+            style="fill: rgb(79, 193, 255);"></rect>
+        <rect width="37" height="7" x="160" y="40" rx="1"
+            style="fill: rgb(220, 220, 138);"></rect>
+        <rect width="17" height="7" x="200" y="40" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="37" height="7" x="80" y="50" rx="1"
+            style="fill: rgb(106, 153, 81);"></rect>
+        <rect width="27" height="7" x="120" y="50" rx="1"
+            style="fill: rgb(189, 87, 129);"></rect>
+        <rect width="17" height="7" x="150" y="50" rx="1"
+            style="fill: rgb(0, 89, 206);"></rect>
+        <rect width="7" height="7" x="170" y="50" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="17" height="7" x="180" y="50" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="7" height="7" x="200" y="50" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="17" height="7" x="210" y="50" rx="1"
+            style="fill: rgb(0, 89, 206);"></rect>
+        <rect width="27" height="7" x="80" y="60" rx="1"
+            style="fill: rgb(77, 201, 176);"></rect>
+        <rect width="7" height="7" x="110" y="60" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="17" height="7" x="120" y="60" rx="1"
+            style="fill: rgb(79, 193, 255);"></rect>
+        <rect width="7" height="7" x="140" y="60" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="17" height="7" x="150" y="60" rx="1"
+            style="fill: rgb(0, 89, 206);"></rect>
+        <rect width="37" height="7" x="170" y="60" rx="1"
+            style="fill: rgb(220, 220, 138);"></rect>
+        <rect width="7" height="7" x="210" y="60" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="17" height="7" x="220" y="60" rx="1"
+            style="fill: rgb(79, 193, 255);"></rect>
+        <rect width="7" height="7" x="60" y="70" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="17" height="7" x="70" y="70" rx="1"
+            style="fill: rgb(79, 193, 255);"></rect>
+        <rect width="27" height="7" x="90" y="70" rx="1"
+            style="fill: rgb(77, 201, 176);"></rect>
+        <rect width="7" height="7" x="120" y="70" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="17" height="7" x="130" y="70" rx="1"
+            style="fill: rgb(0, 89, 206);"></rect>
+        <rect width="27" height="7" x="150" y="70" rx="1"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="7" height="7" x="180" y="70" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="17" height="7" x="190" y="70" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="7" height="7" x="210" y="70" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="17" height="7" x="220" y="70" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="17" height="7" x="50" y="80" rx="1"
+            style="fill: rgb(79, 193, 255);"></rect>
+        <rect width="7" height="7" x="70" y="80" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="7" height="7" x="80" y="80" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="37" height="7" x="100" y="80" rx="1"
+            style="fill: rgb(106, 153, 81);"></rect>
+        <rect width="27" height="7" x="140" y="80" rx="1"
+            style="fill: rgb(77, 201, 176);"></rect>
+        <rect width="37" height="7" x="170" y="80" rx="1"
+            style="fill: rgb(220, 220, 138);"></rect>
+        <rect width="7" height="7" x="50" y="90" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="7" height="7" x="70" y="90" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="27" height="7" x="110" y="90" rx="1"
+            style="fill: rgb(189, 87, 129);"></rect>
+        <rect width="37" height="7" x="140" y="90" rx="1"
+            style="fill: rgb(106, 153, 81);"></rect>
+        <rect width="17" height="7" x="180" y="90" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="7" height="7" x="200" y="90" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="17" height="7" x="110" y="100" rx="1"
+            style="fill: rgb(79, 193, 255);"></rect>
+        <rect width="27" height="7" x="130" y="100" rx="1"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="7" height="7" x="160" y="100" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="37" height="7" x="170" y="100" rx="1"
+            style="fill: rgb(220, 220, 138);"></rect>
+        <rect width="7" height="7" x="210" y="100" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="17" height="7" x="110" y="110" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="37" height="7" x="130" y="110" rx="1"
+            style="fill: rgb(106, 153, 81);"></rect>
+        <rect width="27" height="7" x="170" y="110" rx="1"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="7" height="7" x="200" y="110" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="17" height="7" x="110" y="120" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="27" height="7" x="130" y="120" rx="1"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="37" height="7" x="160" y="120" rx="1"
+            style="fill: rgb(106, 153, 81);"></rect>
+        <rect width="7" height="7" x="200" y="120" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="37" height="7" x="120" y="130" rx="1"
+            style="fill: rgb(106, 153, 81);"></rect>
+        <rect width="27" height="7" x="160" y="130" rx="1"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="7" height="7" x="190" y="130" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="17" height="7" x="200" y="130" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="27" height="7" x="110" y="140" rx="1"
+            style="fill: rgb(189, 87, 129);"></rect>
+        <rect width="17" height="7" x="140" y="140" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="27" height="7" x="160" y="140" rx="1"
+            style="fill: rgb(189, 87, 129);"></rect>
+        <rect width="7" height="7" x="190" y="140" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="27" height="7" x="110" y="150" rx="1"
+            style="fill: rgb(77, 201, 176);"></rect>
+        <rect width="17" height="7" x="140" y="150" rx="1"
+            style="fill: rgb(0, 89, 206);"></rect>
+        <rect width="7" height="7" x="160" y="150" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="27" height="7" x="170" y="150" rx="1"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="37" height="7" x="100" y="160" rx="1"
+            style="fill: rgb(220, 220, 138);"></rect>
+        <rect width="17" height="7" x="140" y="160" rx="1"
+            style="fill: rgb(0, 89, 206);"></rect>
+        <rect width="27" height="7" x="160" y="160" rx="1"
+            style="fill: rgb(189, 87, 129);"></rect>
+        <rect width="17" height="7" x="190" y="160" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="7" height="7" x="210" y="160" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="7" height="7" x="100" y="170" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="17" height="7" x="110" y="170" rx="1"
+            style="fill: rgb(0, 89, 206);"></rect>
+        <rect width="27" height="7" x="130" y="170" rx="1"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="7" height="7" x="160" y="170" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="27" height="7" x="170" y="170" rx="1"
+            style="fill: rgb(77, 201, 176);"></rect>
+        <rect width="7" height="7" x="200" y="170" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="7" height="7" x="210" y="170" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="17" height="7" x="80" y="180" rx="1"
+            style="fill: rgb(79, 193, 255);"></rect>
+        <rect width="7" height="7" x="100" y="180" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="17" height="7" x="110" y="180" rx="1"
+            style="fill: rgb(0, 89, 206);"></rect>
+        <rect width="37" height="7" x="130" y="180" rx="1"
+            style="fill: rgb(220, 220, 138);"></rect>
+        <rect width="17" height="7" x="170" y="180" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="7" height="7" x="190" y="180" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="7" height="7" x="200" y="180" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="7" height="7" x="60" y="190" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="37" height="7" x="70" y="190" rx="1"
+            style="fill: rgb(220, 220, 138);"></rect>
+        <rect width="27" height="7" x="110" y="190" rx="1"
+            style="fill: rgb(77, 201, 176);"></rect>
+        <rect width="37" height="7" x="140" y="190" rx="1"
+            style="fill: rgb(220, 220, 138);"></rect>
+        <rect width="17" height="7" x="180" y="190" rx="1"
+            style="fill: rgb(79, 193, 255);"></rect>
+        <rect width="7" height="7" x="200" y="190" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="27" height="7" x="40" y="200" rx="1"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="7" height="7" x="70" y="200" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="17" height="7" x="80" y="200" rx="1"
+            style="fill: rgb(0, 89, 206);"></rect>
+        <rect width="27" height="7" x="100" y="200" rx="1"
+            style="fill: rgb(189, 87, 129);"></rect>
+        <rect width="7" height="7" x="130" y="200" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="27" height="7" x="140" y="200" rx="1"
+            style="fill: rgb(77, 201, 176);"></rect>
+        <rect width="37" height="7" x="170" y="200" rx="1"
+            style="fill: rgb(220, 220, 138);"></rect>
+        <rect width="7" height="7" x="20" y="210" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="37" height="7" x="30" y="210" rx="1"
+            style="fill: rgb(106, 153, 81);"></rect>
+        <rect width="17" height="7" x="70" y="210" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="27" height="7" x="90" y="210" rx="1"
+            style="fill: rgb(77, 201, 176);"></rect>
+        <rect width="37" height="7" x="120" y="210" rx="1"
+            style="fill: rgb(220, 220, 138);"></rect>
+        <rect width="17" height="7" x="160" y="210" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="7" height="7" x="180" y="210" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="17" height="7" x="190" y="210" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="17" height="7" x="10" y="220" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="27" height="7" x="30" y="220" rx="1"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="7" height="7" x="60" y="220" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="27" height="7" x="70" y="220" rx="1"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="17" height="7" x="100" y="220" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="27" height="7" x="120" y="220" rx="1"
+            style="fill: rgb(189, 87, 129);"></rect>
+        <rect width="17" height="7" x="150" y="220" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="7" height="7" x="170" y="220" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="37" height="7" x="180" y="220" rx="1"
+            style="fill: rgb(220, 220, 138);"></rect>
+        <rect width="7" height="7" x="0" y="230" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="27" height="7" x="10" y="230" rx="1"
+            style="fill: rgb(77, 201, 176);"></rect>
+        <rect width="17" height="7" x="40" y="230" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="7" height="7" x="60" y="230" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="37" height="7" x="70" y="230" rx="1"
+            style="fill: rgb(220, 220, 138);"></rect>
+        <rect width="7" height="7" x="110" y="230" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="37" height="7" x="120" y="230" rx="1"
+            style="fill: rgb(106, 153, 81);"></rect>
+        <rect width="27" height="7" x="160" y="230" rx="1"
+            style="fill: rgb(77, 201, 176);"></rect>
+        <rect width="7" height="7" x="190" y="230" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="17" height="7" x="200" y="230" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="7" height="7" x="220" y="230" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="7" height="7" x="230" y="230" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="7" height="7" x="10" y="240" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="27" height="7" x="20" y="240" rx="1"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="37" height="7" x="50" y="240" rx="1"
+            style="fill: rgb(220, 220, 138);"></rect>
+        <rect width="7" height="7" x="90" y="240" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="37" height="7" x="100" y="240" rx="1"
+            style="fill: rgb(220, 220, 138);"></rect>
+        <rect width="27" height="7" x="140" y="240" rx="1"
+            style="fill: rgb(189, 87, 129);"></rect>
+        <rect width="7" height="7" x="170" y="240" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="17" height="7" x="180" y="240" rx="1"
+            style="fill: rgb(79, 193, 255);"></rect>
+        <rect width="7" height="7" x="200" y="240" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="17" height="7" x="210" y="240" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="7" height="7" x="230" y="240" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="7" height="7" x="240" y="240" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="37" height="7" x="0" y="250" rx="1"
+            style="fill: rgb(106, 153, 81);"></rect>
+        <rect width="7" height="7" x="40" y="250" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="27" height="7" x="50" y="250" rx="1"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="37" height="7" x="80" y="250" rx="1"
+            style="fill: rgb(220, 220, 138);"></rect>
+        <rect width="7" height="7" x="120" y="250" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="17" height="7" x="130" y="250" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="37" height="7" x="150" y="250" rx="1"
+            style="fill: rgb(220, 220, 138);"></rect>
+        <rect width="17" height="7" x="190" y="250" rx="1"
+            style="fill: rgb(0, 89, 206);"></rect>
+        <rect width="27" height="7" x="210" y="250" rx="1"
+            style="fill: rgb(77, 201, 176);"></rect>
+        <rect width="7" height="7" x="240" y="250" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="17" height="7" x="20" y="260" rx="1"
+            style="fill: rgb(79, 193, 255);"></rect>
+        <rect width="7" height="7" x="40" y="260" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="7" height="7" x="50" y="260" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="27" height="7" x="90" y="260" rx="1"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="37" height="7" x="120" y="260" rx="1"
+            style="fill: rgb(220, 220, 138);"></rect>
+        <rect width="27" height="7" x="160" y="260" rx="1"
+            style="fill: rgb(77, 201, 176);"></rect>
+        <rect width="7" height="7" x="190" y="260" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="37" height="7" x="200" y="260" rx="1"
+            style="fill: rgb(220, 220, 138);"></rect>
+        <rect width="7" height="7" x="240" y="260" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="7" height="7" x="30" y="270" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="7" height="7" x="90" y="270" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="17" height="7" x="100" y="270" rx="1"
+            style="fill: rgb(0, 89, 206);"></rect>
+        <rect width="27" height="7" x="120" y="270" rx="1"
+            style="fill: rgb(189, 87, 129);"></rect>
+        <rect width="7" height="7" x="150" y="270" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="17" height="7" x="160" y="270" rx="1"
+            style="fill: rgb(79, 193, 255);"></rect>
+        <rect width="37" height="7" x="180" y="270" rx="1"
+            style="fill: rgb(220, 220, 138);"></rect>
+        <rect width="7" height="7" x="220" y="270" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="17" height="7" x="230" y="270" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="7" height="7" x="100" y="280" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="7" height="7" x="140" y="280" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="17" height="7" x="150" y="280" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="27" height="7" x="170" y="280" rx="1"
+            style="fill: rgb(189, 87, 129);"></rect>
+        <rect width="17" height="7" x="200" y="280" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="7" height="7" x="220" y="280" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="27" height="7" x="150" y="290" rx="1"
+            style="fill: rgb(189, 87, 129);"></rect>
+        <rect width="17" height="7" x="180" y="290" rx="1"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="7" height="7" x="200" y="290" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="7" height="7" x="160" y="300" rx="1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="17" height="7" x="170" y="300" rx="1"
+            style="fill: rgb(79, 193, 255);"></rect>
+        <rect width="7" height="7" x="190" y="300" rx="1"
+            style="fill: rgb(197, 134, 160);"></rect>
+    </g>
+</svg>

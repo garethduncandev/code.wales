@@ -10,44 +10,36 @@
     <link rel="preload" as="image" href="/wales.png" />
     <link rel="stylesheet" href="/src/app.css" />
     <link rel="stylesheet" href="/src/image-code-blocks.css" />
-    <link rel="icon" type="image/x-icon" href="/favicon.svg" />
+
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="rgb(197, 134, 160)" />
+
     <script type="module" src="/src/app.ts"></script>
   </head>
   <body>
     <main id="container">
       <div id="output"></div>
 
-      <nav id="nav">
-        <table>
-          <tr>
-            <td>code.wales</td>
-            <td>
-              <a
-                href="https://github.com/garethduncandev/code.wales"
-                alt="Github repo for code.wales"
-                >repo
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>blocks</td>
-            <td>
-              <a
-                href="https://github.com/garethduncandev/blocks"
-                alt="Github repo for the blocks library used by code.wales"
-                >repo
-              </a>
-            </td>
-            <td>
-              <a
-                href="https://www.npmjs.com/package/@garethduncandev/blocks"
-                alt="npm package for blocks used by code.wales"
-                >npm
-              </a>
-            </td>
-          </tr>
-        </table>
-      </nav>
+      <p id="intro">
+        Built with
+        <a
+          href="https://www.npmjs.com/package/blociau"
+          alt="npm package for blociau used by code.wales"
+          >blociau</a
+        >
+        (<a
+          href="https://github.com/garethduncandev/blociau"
+          alt="Github repo for the blocks library used by code.wales"
+          >src</a
+        >) and hosted on Github Pages (<a
+          href="https://github.com/garethduncandev/code.wales"
+          alt="Github repo for code.wales"
+          >src</a
+        >)
+      </p>
     </main>
   </body>
 </html>

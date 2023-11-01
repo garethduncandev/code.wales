@@ -1,10 +1,10 @@
-import Blocks from '@garethduncandev/blocks';
+import Blociau from 'blociau';
 
 const codeBlockHeight = 10;
 const codeBlockMinWidth = codeBlockHeight;
 const padding = codeBlockHeight / 4;
 
-const blocks = new Blocks(
+const blocks = new Blociau(
   codeBlockHeight,
   [
     {
@@ -14,7 +14,7 @@ const blocks = new Blocks(
     },
     {
       borderRadius: 1,
-      color: 'rgb(0, 122, 216)',
+      color: 'rgb(197, 134, 160)',
       width: codeBlockMinWidth,
     },
     {
@@ -35,7 +35,7 @@ const blocks = new Blocks(
     {
       borderRadius: 1,
       color: 'rgb(220, 220, 138)',
-      width: codeBlockMinWidth * 3,
+      width: codeBlockMinWidth * 4,
     },
     {
       borderRadius: 1,
@@ -47,10 +47,11 @@ const blocks = new Blocks(
       color: 'rgb(77, 201, 176)',
       width: codeBlockMinWidth * 3,
     },
+
     {
       borderRadius: 1,
-      color: 'rgb(197, 134, 160)',
-      width: codeBlockMinWidth * 4,
+      color: 'rgb(0, 122, 216)',
+      width: codeBlockMinWidth * 3,
     },
     {
       borderRadius: 1,
@@ -70,7 +71,7 @@ image.alt = 'Outline of Wales';
 image.title = 'Outline of Wales';
 image.onload = (): void => {
   const svg = blocks.create('wales', image);
-  blocks.animate('wales', svg, 0.2);
+  //blocks.animate('wales', svg, 0.2);
   output?.appendChild(svg);
   container?.classList.remove('loading');
   container?.classList.add('loaded');

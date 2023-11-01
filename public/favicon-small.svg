@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"
+    viewBox="-31.5 -1 309 309">
+    <g id="wales-code-blocks-group">
+        <rect width="15" height="15" x="60" y="0" rx="1" class="block-width-20 block-index-1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="15" height="15" x="80" y="0" rx="1" class="block-width-20 block-index-2"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="35" height="15" x="60" y="20" rx="1" class="block-width-40 block-index-1"
+            style="fill: rgb(79, 193, 255);"></rect>
+        <rect width="75" height="15" x="100" y="20" rx="1" class="block-width-80 block-index-2"
+            style="fill: rgb(106, 153, 81);"></rect>
+        <rect width="35" height="15" x="180" y="20" rx="1" class="block-width-40 block-index-2"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="55" height="15" x="80" y="40" rx="1" class="block-width-60 block-index-2"
+            style="fill: rgb(189, 87, 129);"></rect>
+        <rect width="35" height="15" x="140" y="40" rx="1" class="block-width-40 block-index-1"
+            style="fill: rgb(79, 193, 255);"></rect>
+        <rect width="55" height="15" x="180" y="40" rx="1" class="block-width-60 block-index-1"
+            style="fill: rgb(220, 220, 138);"></rect>
+        <rect width="75" height="15" x="60" y="60" rx="1" class="block-width-80 block-index-1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="15" height="15" x="140" y="60" rx="1" class="block-width-20 block-index-2"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="35" height="15" x="160" y="60" rx="1" class="block-width-40 block-index-3"
+            style="fill: rgb(0, 89, 206);"></rect>
+        <rect width="15" height="15" x="200" y="60" rx="1" class="block-width-20 block-index-1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="15" height="15" x="220" y="60" rx="1" class="block-width-20 block-index-2"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="15" height="15" x="40" y="80" rx="1" class="block-width-20 block-index-2"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="15" height="15" x="60" y="80" rx="1" class="block-width-20 block-index-1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="15" height="15" x="100" y="80" rx="1" class="block-width-20 block-index-2"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="35" height="15" x="120" y="80" rx="1" class="block-width-40 block-index-1"
+            style="fill: rgb(79, 193, 255);"></rect>
+        <rect width="15" height="15" x="160" y="80" rx="1" class="block-width-20 block-index-1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="35" height="15" x="180" y="80" rx="1" class="block-width-40 block-index-2"
+            style="fill: rgb(156, 220, 254);"></rect>
+        <rect width="15" height="15" x="100" y="100" rx="1" class="block-width-20 block-index-1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="75" height="15" x="120" y="100" rx="1" class="block-width-80 block-index-1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="15" height="15" x="200" y="100" rx="1" class="block-width-20 block-index-2"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="75" height="15" x="100" y="120" rx="1" class="block-width-80 block-index-1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="15" height="15" x="180" y="120" rx="1" class="block-width-20 block-index-2"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="15" height="15" x="200" y="120" rx="1" class="block-width-20 block-index-1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="75" height="15" x="100" y="140" rx="1" class="block-width-80 block-index-1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="15" height="15" x="180" y="140" rx="1" class="block-width-20 block-index-1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="15" height="15" x="100" y="160" rx="1" class="block-width-20 block-index-2"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="75" height="15" x="120" y="160" rx="1" class="block-width-80 block-index-2"
+            style="fill: rgb(106, 153, 81);"></rect>
+        <rect width="15" height="15" x="200" y="160" rx="1" class="block-width-20 block-index-1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="35" height="15" x="60" y="180" rx="1" class="block-width-40 block-index-1"
+            style="fill: rgb(79, 193, 255);"></rect>
+        <rect width="75" height="15" x="100" y="180" rx="1" class="block-width-80 block-index-1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="35" height="15" x="180" y="180" rx="1" class="block-width-40 block-index-3"
+            style="fill: rgb(0, 89, 206);"></rect>
+        <rect width="55" height="15" x="40" y="200" rx="1" class="block-width-60 block-index-3"
+            style="fill: rgb(77, 201, 176);"></rect>
+        <rect width="15" height="15" x="100" y="200" rx="1" class="block-width-20 block-index-1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="35" height="15" x="120" y="200" rx="1" class="block-width-40 block-index-1"
+            style="fill: rgb(79, 193, 255);"></rect>
+        <rect width="55" height="15" x="160" y="200" rx="1" class="block-width-60 block-index-1"
+            style="fill: rgb(220, 220, 138);"></rect>
+        <rect width="75" height="15" x="0" y="220" rx="1" class="block-width-80 block-index-1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="35" height="15" x="80" y="220" rx="1" class="block-width-40 block-index-3"
+            style="fill: rgb(0, 89, 206);"></rect>
+        <rect width="75" height="15" x="120" y="220" rx="1" class="block-width-80 block-index-2"
+            style="fill: rgb(106, 153, 81);"></rect>
+        <rect width="35" height="15" x="200" y="220" rx="1" class="block-width-40 block-index-3"
+            style="fill: rgb(0, 89, 206);"></rect>
+        <rect width="15" height="15" x="0" y="240" rx="1" class="block-width-20 block-index-2"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="55" height="15" x="20" y="240" rx="1" class="block-width-60 block-index-2"
+            style="fill: rgb(189, 87, 129);"></rect>
+        <rect width="35" height="15" x="80" y="240" rx="1" class="block-width-40 block-index-1"
+            style="fill: rgb(79, 193, 255);"></rect>
+        <rect width="75" height="15" x="120" y="240" rx="1" class="block-width-80 block-index-1"
+            style="fill: rgb(197, 134, 160);"></rect>
+        <rect width="15" height="15" x="200" y="240" rx="1" class="block-width-20 block-index-2"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="35" height="15" x="220" y="240" rx="1" class="block-width-40 block-index-3"
+            style="fill: rgb(0, 89, 206);"></rect>
+        <rect width="15" height="15" x="20" y="260" rx="1" class="block-width-20 block-index-1"
+            style="fill: rgb(0, 105, 243);"></rect>
+        <rect width="15" height="15" x="40" y="260" rx="1" class="block-width-20 block-index-2"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="75" height="15" x="100" y="260" rx="1" class="block-width-80 block-index-2"
+            style="fill: rgb(106, 153, 81);"></rect>
+        <rect width="55" height="15" x="180" y="260" rx="1" class="block-width-60 block-index-3"
+            style="fill: rgb(77, 201, 176);"></rect>
+        <rect width="15" height="15" x="240" y="260" rx="1" class="block-width-20 block-index-2"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="15" height="15" x="140" y="280" rx="1" class="block-width-20 block-index-2"
+            style="fill: rgb(0, 122, 216);"></rect>
+        <rect width="35" height="15" x="160" y="280" rx="1" class="block-width-40 block-index-1"
+            style="fill: rgb(79, 193, 255);"></rect>
+        <rect width="15" height="15" x="200" y="280" rx="1" class="block-width-20 block-index-2"
+            style="fill: rgb(0, 122, 216);"></rect>
+    </g>
+</svg>
