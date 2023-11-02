@@ -71,7 +71,15 @@ image.alt = 'Outline of Wales';
 image.title = 'Outline of Wales';
 image.onload = (): void => {
   const svg = blocks.create('wales', image);
-  //blocks.animate('wales', svg, 0.2);
+  const result = blocks.animate('wales', svg, 0.2, 500);
+
+  const style = document.createElement('style');
+  document.head.appendChild(style);
+
+  result.cssRules.forEach((rule) => {
+    style.sheet?.insertRule(rule);
+  });
+
   output?.appendChild(svg);
   container?.classList.remove('loading');
   container?.classList.add('loaded');
