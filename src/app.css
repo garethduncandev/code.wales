@@ -32,17 +32,13 @@ body {
   font-size: 1.5rem;
   color: #ffffff;
   a {
-    color: white;
+    color: rgb(200, 0, 0);
     text-decoration: none;
-
-    text-decoration: underline;
-    text-decoration-thickness: 0.3rem;
-    text-decoration-color: rgb(0, 105, 243);
+    text-decoration-thickness: 0.2rem;
+    text-decoration-color: rgb(200, 0, 0);
   }
   a:hover {
     text-decoration: underline;
-    text-decoration-thickness: 0.3rem;
-    text-decoration-color: rgb(79, 193, 255);
   }
 }
 
