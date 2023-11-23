@@ -1,4 +1,5 @@
 {
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
     {
@@ -8,7 +9,7 @@
       "name": "Launch Vite DEV server",
       "request": "launch",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeArgs": ["start"],
       "type": "node",
       "serverReadyAction": {
         "action": "debugWithEdge",
@@ -16,7 +17,7 @@
         "uriFormat": "http://localhost:%s/",
         "killOnServerStop": true
       },
-      "console": "internalConsole"
+      "console": "integratedTerminal"
     }
   ]
 }

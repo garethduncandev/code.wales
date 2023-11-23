@@ -1,0 +1,37 @@
+#container {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 90dvw;
+  max-height: 90dvh;
+  display: block;
+}
+
+#wales-wc {
+  height: 100%;
+  width: 100%;
+}
+
+#intro {
+  margin: 1rem;
+  font-size: 1rem;
+  color: #ffffff;
+  a {
+    color: rgb(200, 0, 0);
+    text-decoration: none;
+    text-decoration-thickness: 0.2rem;
+    text-decoration-color: rgb(200, 0, 0);
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  position: absolute;
+  bottom: 0;
+}
+
+.loading {
+  display: none;
+}
