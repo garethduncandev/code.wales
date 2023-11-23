@@ -6,7 +6,7 @@
   left: 0;
   right: 0;
   max-width: 90dvw;
-  max-height: 90dvh;
+  max-height: calc(90dvh - 3rem);
   display: block;
 }
 
