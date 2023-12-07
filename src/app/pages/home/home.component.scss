@@ -20,10 +20,16 @@
   font-size: 1rem;
   color: #ffffff;
   a {
-    color: rgb(200, 0, 0);
+    margin: 1rem;
+    color: #ffffff;
     text-decoration: none;
     text-decoration-thickness: 0.2rem;
     text-decoration-color: rgb(200, 0, 0);
+
+    img {
+      height: 3rem;
+      width: 3rem;
+    }
   }
   a:hover {
     text-decoration: underline;
